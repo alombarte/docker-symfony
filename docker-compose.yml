@@ -1,8 +1,8 @@
 application:
     build: code
     volumes:
-        - ./symfony:/var/www/symfony
-        - ./logs/symfony:/var/www/symfony/app/logs
+        - ./app:/var/www/app
+        - ./logs/app:/var/www/app/logs
     tty: true
 db:
     image: mysql
@@ -34,7 +34,7 @@ nginx:
 elk:
     image: willdurand/elk
     ports:
-        - 81:80
+        - 8081:80
     volumes:
         - ./elk/logstash:/etc/logstash
         - ./elk/logstash/patterns:/opt/logstash/patterns
