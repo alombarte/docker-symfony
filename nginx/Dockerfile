@@ -2,7 +2,11 @@ FROM debian:jessie
 
 MAINTAINER Vincent Composieux <vincent.composieux@gmail.com>
 
-RUN apt-get update && apt-get install -y nginx
+RUN apt-get update && apt-get install -y \
+	nginx \
+	--no-install-recommends \ 
+	&& rm -rf /var/lib/apt/lists/*
+
 
 ADD nginx.conf /etc/nginx/
 ADD symfony.conf /etc/nginx/sites-available/
